@@ -1,5 +1,6 @@
 package ru.geekbrains.javaee.study.servlet;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +10,7 @@ import java.io.PrintWriter;
 public abstract class NavigableServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         PrintWriter writer = resp.getWriter();
         writer.printf("" +
                         "<div>" +
@@ -27,6 +28,9 @@ public abstract class NavigableServlet extends HttpServlet {
                         "   </span>" +
                         "   <span>" +
                         "       <a href='%1$s/order'>Order</a>" +
+                        "   </span>" +
+                        "   <span>" +
+                        "       <a href='%1$s/about'>About</a>" +
                         "   </span>" +
                         "</div>",
                 req.getContextPath());
